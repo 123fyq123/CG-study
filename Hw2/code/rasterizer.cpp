@@ -216,21 +216,21 @@ void rst::rasterizer::clear(rst::Buffers buff)
     if ((buff & rst::Buffers::Color) == rst::Buffers::Color)
     {
         std::fill(frame_buf.begin(), frame_buf.end(), Eigen::Vector3f{0, 0, 0});
-        std::fill(frame_buf_ssaa.begin(), frame_buf_ssaa.end(), Eigen::Vector3f{0, 0, 0});
+        // std::fill(frame_buf_ssaa.begin(), frame_buf_ssaa.end(), Eigen::Vector3f{0, 0, 0});
     }
     if ((buff & rst::Buffers::Depth) == rst::Buffers::Depth)
     {
         std::fill(depth_buf.begin(), depth_buf.end(), std::numeric_limits<float>::infinity());
-        std::fill(depth_buf_ssaa.begin(), depth_buf_ssaa.end(), std::numeric_limits<float>::infinity());
+        // std::fill(depth_buf_ssaa.begin(), depth_buf_ssaa.end(), std::numeric_limits<float>::infinity());
     }
 }
 
 rst::rasterizer::rasterizer(int w, int h) : width(w), height(h)
 {
     frame_buf.resize(w * h);
-    frame_buf_ssaa.resize(w * ssaa_w * h * ssaa_h);
+    // frame_buf_ssaa.resize(w * ssaa_w * h * ssaa_h);
     depth_buf.resize(w * h);
-    depth_buf_ssaa.resize(w * ssaa_w * h * ssaa_h);
+    // depth_buf_ssaa.resize(w * ssaa_w * h * ssaa_h);
 }
 
 int rst::rasterizer::get_index(int x, int y)
@@ -239,14 +239,14 @@ int rst::rasterizer::get_index(int x, int y)
 }
 
 
-int rst::rasterizer::get_index_ssaa(int x, int y, double i, double j) {
-    int ssaa_height = height * ssaa_h;
-    int ssaa_width = width * ssaa_w;
-    int smallx = int((i - start_pos) / pixel_size_small);
-    int smally = int((j - start_pos) / pixel_size_small);
+// int rst::rasterizer::get_index_ssaa(int x, int y, double i, double j) {
+//     int ssaa_height = height * ssaa_h;
+//     int ssaa_width = width * ssaa_w;
+//     int smallx = int((i - start_pos) / pixel_size_small);
+//     int smally = int((j - start_pos) / pixel_size_small);
 
-    return (ssaa_height - 1 - y * ssaa_h + smally) * ssaa_width + x * ssaa_w + smallx; 
-}
+//     return (ssaa_height - 1 - y * ssaa_h + smally) * ssaa_width + x * ssaa_w + smallx; 
+// }
 
 void rst::rasterizer::set_pixel(const Eigen::Vector3f& point, const Eigen::Vector3f& color)
 {

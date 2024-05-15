@@ -74,7 +74,6 @@ namespace rst
         void draw(pos_buf_id pos_buffer, ind_buf_id ind_buffer, col_buf_id col_buffer, Primitive type);
 
         std::vector<Eigen::Vector3f>& frame_buffer() { return frame_buf; }
-        std::vector<Eigen::Vector3f>& frame_buffer_ssaa() { return frame_buf_ssaa; }
     private:
         void draw_line(Eigen::Vector3f begin, Eigen::Vector3f end);
 
@@ -97,11 +96,11 @@ namespace rst
         std::vector<float> depth_buf;
         std::vector<double> depth_buf_ssaa;
         int get_index(int x, int y);
-        int get_index_ssaa(int x, int y, double i, double j);
+        // int get_index_ssaa(int x, int y, double i, double j);
         int width, height;
-        const int ssaa_h = 2, ssaa_w = 2;
-        double pixel_size_small = 1.0 / ssaa_h;
-        double start_pos = pixel_size_small / 2.0;
+        // const int ssaa_h = 2, ssaa_w = 2;
+        // double pixel_size_small = 1.0 / ssaa_h;
+        // double start_pos = pixel_size_small / 2.0;
 
         int next_id = 0;
         int get_next_id() { return next_id++; }

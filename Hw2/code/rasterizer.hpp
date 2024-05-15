@@ -96,11 +96,11 @@ namespace rst
         std::vector<float> depth_buf;
         std::vector<double> depth_buf_ssaa;
         int get_index(int x, int y);
-        // int get_index_ssaa(int x, int y, double i, double j);
+        int get_index_ssaa(int x, int y, double i, double j);
         int width, height;
-        // const int ssaa_h = 2, ssaa_w = 2;
-        // double pixel_size_small = 1.0 / ssaa_h;
-        // double start_pos = pixel_size_small / 2.0;
+        const int ssaa_h = 2, ssaa_w = 2; // 分成多少个小像素
+        double pixel_size_small = 1.0 / ssaa_h; 
+        double start_pos = pixel_size_small / 2.0;
 
         int next_id = 0;
         int get_next_id() { return next_id++; }

@@ -100,7 +100,7 @@ namespace rst
         int width, height;
         const int ssaa_h = 2, ssaa_w = 2; // 分成多少个小像素
         double pixel_size_small = 1.0 / ssaa_h; 
-        double start_pos = pixel_size_small / 2.0;
+        double start_pos = pixel_size_small / ssaa_h;
 
         int next_id = 0;
         int get_next_id() { return next_id++; }
